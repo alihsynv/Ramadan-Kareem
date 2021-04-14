@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+}
+
+header .logo {
+    position: relative;
+    color: #ff5e8e;
+    display: inline-block;
+    font-size: 2em;
+    text-decoration: none;
+    font-weight: 800;
+    opacity: 0;
+    animation: slide_left .5s linear forwards;
+    animation-delay: .2s;
+}
+
+
+header ul {
+    position: relative;
+    display: flex;
+}
+
+header ul li {
+    list-style: none;
+}
+
+header ul li a {
+    display: inline-block;
+    color: #0169b2;
+    font-weight: 600;
+    font-size: 1.1em;
+    margin-left: 10px;
+    padding: 8px 18px;
+    text-decoration: none;
+    user-select: none;
+    opacity: 0;
+    animation: slide_top .5s linear forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+
+header ul li a.active,
+header ul li a:hover {
+    background: #0169b2;
+    color: white;
+    border-radius: 30px;
+}
+
+.content {
+    position: relative;
+    display: flex;
+}
+
+.content .textBox {
+    position: relative;
+    max-width: 550px;
+}
+
+.content .textBox h2 {
+    color: #0169b2;
+    font-size: 3.5em;
+    line-height: 1.2em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: slide_right .5s linear forwards;
+    animation-delay: 1.5s;
+}
+
+
+.content .textBox p {
+    font-size: 1.2em;
+    color: #333;
+    opacity: 0;
+    animation: slide_left .5s linear forwards;
+    animation-delay: 1.75s;
+}
+
+.content .textBox a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 30px;
+    background: #ff5e8e;
+    color: white;
+    font-size: 1.2em;
+    border-radius: 40px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-decoration: none;
+    opacity: 0;
+    animation: slide_top .5s linear forwards;
+    animation-delay: 2s;
+}
+
+.content .textBox a:hover {
+    background: #0169b2;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 10px 30px #367db1;
+}
+
+.sci {
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sci li {
+    list-style: none;
+}
+
+.sci li a {
+    position: relative;
+    margin-right: 15px;
+    width: 50px;
+    height: 50px;
+    background: #0169b2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+    opacity: 0;
+    animation: slide_right .5s linear forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+.sci li a img {
+    filter: invert(1);
+    transform: scale(0.5);
+}
+
+.sci li a:hover {
+    background: #ff5e8e;
+    box-shadow: 0px 10px 30px #fc83a7;
+    transform: translateY(-10px);
+}
+
+.mosque {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    max-width: 700px;
+    opacity: 0;
+    animation: fade_in 1s linear forwards;
+    animation-delay: 3.5s;
+}
+
+
+/* Responsive Design */
+
+@media(max-width: 991px) {
+    section {
+        padding: 150px 20px;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .navigation.active {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    header ul li {
+        margin: 10px 0;
+    }
+
+    header ul li a {
+        margin-left: 0;
+        font-size: 1.5em;
+    }
+
+    .toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        background: #0169b2 url(img/menu.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        z-index: 1000;
+        border-radius: 2px;
+    }
+
+    .toggle.active {
+        background: #0169b2 url(img/close.png);
+        background-size: 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .mosque {
+        max-width: 400px;
+    }
+
+    .content .textBox h2 {
+        font-size: 2.5em;
+    }
+}
+
+@media(max-width: 690px) {
+    .mosque {
+        opacity: .4 !important;
+    }
+}
+
+/****************** Animate ******************/
+
+@keyframes slide_top {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slide_left {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes slide_right {
+    0% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes fade_in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
